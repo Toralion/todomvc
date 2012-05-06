@@ -6,8 +6,16 @@ define( {
 
 	plugins: [
 		{ module: 'wire/debug', trace: { pointcut: /^((?!(model$|constructor$|template|localstorage|_)).*)$/ } }, // Stop constructor, model or anything beginning with _, template or localstorage being wrapped by the debugger
+		{ module: 'wire/underscore/template' },
 		{ module: 'wire/jquery/dom' }
 	],
+
+
+	//
+	// General Properties
+	//
+	el_app: { $ref: 'dom.first!#todoapp' },
+
 
 	//
 	// Data Modules
@@ -30,10 +38,10 @@ define( {
 	//
 
 	// Individual todo template
-	template_todo: {},
+	template_todo: { $ref: 'template.underscore!template/todo.html' },
 
 	// Todos statistics template
-	template_stats: {},
+	template_stats: { $ref: 'template.underscore!template/stats.html' },
 
 
 	//
@@ -42,7 +50,25 @@ define( {
 
 	// Application view
 	// Controls the base interface elements
-	view_app: {},
+	view_app: {
+
+		create: {
+			module: 'view/app',
+			args: [
+				// Options
+				{
+					el: { $ref: 'el_app' }
+				}
+			]
+		},
+
+		properties: {
+
+			// Add stats template
+			template_stats: { $ref: 'template_stats' }
+		}
+
+	},
 
 	// Application collection
 	// Holds all todos
