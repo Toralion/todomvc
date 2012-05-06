@@ -1,7 +1,13 @@
-define( [ 'wire!context/app', 'backbone' ],
-function( context_app, Backbone ) {
+define( [ 'wire!context/app', 'when' ],
+function( context_app, when ) {
 	'use strict';
 
-	// Your starting point. Enjoy the ride!
+	// When all items in the context are ready
+	when( context_app ).then( function( context ) {
+
+		// Start routing
+		context[ 'router_app' ].startRouting();
+
+	} );
 
 } );

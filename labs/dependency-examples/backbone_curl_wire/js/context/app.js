@@ -70,7 +70,21 @@ define( {
 
 	// Application router
 	// Changes the state of the application based on url routes
-	router_app: {},
+	router_app: {
+
+		create: {
+			module: 'helper/router',
+			args: []
+		},
+
+		properties: {
+
+			// Options for backbone history object
+			history_options: {}
+
+		}
+
+	},
 
 
 	//
