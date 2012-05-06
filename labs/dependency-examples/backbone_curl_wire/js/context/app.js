@@ -7,7 +7,8 @@ define( {
 	plugins: [
 		{ module: 'wire/debug', trace: { pointcut: /^((?!(model$|constructor$|template|localstorage|_)).*)$/ } }, // Stop constructor, model or anything beginning with _, template or localstorage being wrapped by the debugger
 		{ module: 'wire/underscore/template' },
-		{ module: 'wire/jquery/dom' }
+		{ module: 'wire/jquery/dom' },
+		{ module: 'wire/backbone/events' }
 	],
 
 
@@ -15,6 +16,8 @@ define( {
 	// General Properties
 	//
 	el_app: { $ref: 'dom.first!#todoapp' },
+
+	el_input: { $ref: 'dom.first!#new-todo' },
 
 
 	//
@@ -65,7 +68,10 @@ define( {
 		properties: {
 
 			// Add stats template
-			template_stats: { $ref: 'template_stats' }
+			template_stats: { $ref: 'template_stats' },
+
+			// Selectors
+			el_input: { $ref: 'el_input' }
 		}
 
 	},
@@ -90,6 +96,12 @@ define( {
 
 			// Add our local storage adapter to the collection
 			localStorage: { $ref: 'localstorage_todos' }
+		},
+
+		connect: {
+			'view_app': {
+				'createTodo': 'create'
+			}
 		}
 
 	},
