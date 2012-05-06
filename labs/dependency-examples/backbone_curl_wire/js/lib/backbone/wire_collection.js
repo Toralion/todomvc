@@ -68,7 +68,7 @@ define( [ 'backbone', 'underscore', 'when' ], function( Backbone, _, when ) {
 				return model;
 			} else {
 				return when( self._prepareContext( model, options ) ).then( function( context ) {
-					return context[ context.name_model ];
+					return context[ context.name_model || 'model' ];
 				} );
 			}
 
@@ -107,7 +107,7 @@ define( [ 'backbone', 'underscore', 'when' ], function( Backbone, _, when ) {
 		// Should only be called by the `_prepareContext` fn
 		_onPrepareContext: function( context, data, options ) {
 			var self = this,
-				model = context[ context.name_model ];
+				model = context[ context.name_model || 'model' ];
 
 			self.onReadyContext( context, options );
 

@@ -11,6 +11,13 @@ define( {
 
 
 	//
+	// General properties
+	//
+	name_view: 'view_todo',
+	name_model: 'model_todo',
+
+
+	//
 	// Backbone modules
 	//
 
@@ -20,6 +27,20 @@ define( {
 
 	// Application collection
 	// Holds the state for this todo
-	model_todo: {}
+	model_todo: {
+
+		create: {
+			module: 'model/todo',
+			args: [
+				// Attrs
+				{ $ref: 'model_data' },
+				// Options
+				{
+					parse: true
+				}
+			]
+		}
+
+	}
 
 } );
