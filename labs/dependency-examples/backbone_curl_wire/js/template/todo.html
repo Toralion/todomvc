@@ -1,16 +1,7 @@
-<li class="completed">
-	<div class="view">
-		<input class="toggle" type="checkbox" checked>
-		<label>Create a TodoMVC template</label>
-		<button class="destroy"></button>
-	</div>
-	<input class="edit" value="Create a TodoMVC template">
-</li>
-<li>
-	<div class="view">
-		<input class="toggle" type="checkbox">
-		<label>Rule the web</label>
-		<button class="destroy"></button>
-	</div>
-	<input class="edit" value="Rule the web">
-</li>
+<!-- Todo item -->
+<div class="view">
+	<input class="toggle" type="checkbox" <% if (completed) { %>checked<% } %>>
+	<label><%= title %></label>
+	<button class="destroy"></button>
+</div>
+<input class="edit" value="<%= title %>">

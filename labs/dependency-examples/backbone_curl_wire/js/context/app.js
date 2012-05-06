@@ -18,6 +18,7 @@ define( {
 	el_app: { $ref: 'dom.first!#todoapp' },
 
 	el_input: { $ref: 'dom.first!#new-todo' },
+	el_todos: { $ref: 'dom.first!#todo-list' },
 
 
 	//
@@ -70,8 +71,15 @@ define( {
 			// Add stats template
 			template_stats: { $ref: 'template_stats' },
 
-			// Selectors
-			el_input: { $ref: 'el_input' }
+			// Elements
+			el_input: { $ref: 'el_input' },
+			el_todos: { $ref: 'el_todos' }
+		},
+
+		connect: {
+			'collection_todos': {
+				'readyContext': 'addTodo'
+			}
 		}
 
 	},

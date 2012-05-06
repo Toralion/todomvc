@@ -2,13 +2,13 @@
 // Todo Model
 //
 
-define( [ 'backbone' ], function( Backbone ) {
+define( [ 'backbone', 'underscore' ], function( Backbone, _ ) {
 
 	// Model logic
 	return Backbone.Model.extend( {
 
 		defaults: {
-			done: false
+			completed: false
 		},
 
 		parse: function( attrs ) {
@@ -30,6 +30,15 @@ define( [ 'backbone' ], function( Backbone ) {
 			}
 
 			return ownAttrs;
+		},
+
+		templateJSON: function() {
+			var self = this,
+				data = {};
+
+			_.extend( data, self.toJSON() );
+
+			return data;
 		}
 
 	} );

@@ -118,7 +118,11 @@ define( [ 'backbone', 'underscore', 'when' ], function( Backbone, _, when ) {
 
 		},
 
-		onReadyContext: function( context, options ) {}
+		onReadyContext: function( context, options ) {
+			var self = this;
+
+			self.trigger( 'readyContext', context, options );
+		}
 
 	} );
 
