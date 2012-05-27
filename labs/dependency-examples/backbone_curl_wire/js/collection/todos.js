@@ -8,6 +8,12 @@ define( [ 'backbone/wire_collection' ], function( Collection ) {
 	// we can take advantage of its wire context creation methods.
 	return Collection.extend( {
 
+		update: function( data, options ) {
+			var self = this;
+
+			self.invoke( 'save', data, options );
+		}
+
 	} );
 	
 } );

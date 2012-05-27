@@ -18,6 +18,7 @@ define( {
 	el_app: { $ref: 'dom.first!#todoapp' },
 	el_input: { $ref: 'dom.first!#new-todo' },
 	el_todos: { $ref: 'dom.first!#todo-list' },
+	el_completed: { $ref: 'dom.first!#toggle-all' },
 
 	CREATE_KEYS: [
 		13 // Enter
@@ -79,7 +80,8 @@ define( {
 
 			// Elements
 			el_input: { $ref: 'el_input' },
-			el_todos: { $ref: 'el_todos' }
+			el_todos: { $ref: 'el_todos' },
+			el_completed: { $ref: 'el_completed' }
 		},
 
 		connect: {
@@ -114,7 +116,8 @@ define( {
 
 		connect: {
 			'view_app': {
-				'createTodo': 'create'
+				'createTodo': 'create',
+				'updateTodos': 'update'
 			}
 		}
 

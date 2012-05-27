@@ -14,6 +14,7 @@ define( [ 'backbone', 'underscore', 'jquery' ], function( Backbone, _, $ ) {
 		// Override from the wire specification
 		el_input: false,
 		el_todos: false,
+		el_completed: false,
 
 		CREATE_KEYS: [],
 
@@ -33,6 +34,12 @@ define( [ 'backbone', 'underscore', 'jquery' ], function( Backbone, _, $ ) {
 			return $.trim( $( self.el_input ).val() || '' );
 		},
 
+		getAllCompletedValue: function() {
+			var self = this;
+
+			return $( self.el_completed ).is( ':checked' );
+		},
+
 		addTodo: function( context, options ) {
 			var self = this;
 
@@ -44,7 +51,13 @@ define( [ 'backbone', 'underscore', 'jquery' ], function( Backbone, _, $ ) {
 		// Dom events
 		//
 		events: {
-			'keypress #new-todo': 'createOnKey'
+
+			// Input
+			'keypress #new-todo': 'createOnKey',
+
+			// Completed
+			'change #toggle-all': 'toggleAllCompleted'
+
 		},
 
 		createOnKey: function( e ) {
@@ -62,6 +75,17 @@ define( [ 'backbone', 'underscore', 'jquery' ], function( Backbone, _, $ ) {
 
 			$( self.el_input ).val( '' );
 
+		},
+
+		toggleAllCompleted: function( e ) {
+			var self = this,
+				is_completed;
+
+			is_completed = self.getAllCompletedValue();
+
+			self.trigger( 'updateTodos', {
+				completed: is_completed
+			} );
 		}
 
 	} );
