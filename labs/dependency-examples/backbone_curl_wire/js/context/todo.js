@@ -39,6 +39,9 @@ define( {
 
 		properties: {
 
+			// Properties
+			CREATE_KEYS: { $ref: 'CREATE_KEYS' },
+
 			// Add todo template
 			template_todo: { $ref: 'template_todo' },
 

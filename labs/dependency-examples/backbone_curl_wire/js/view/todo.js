@@ -15,6 +15,7 @@ define( [ 'backbone', 'underscore', 'jquery' ], function( Backbone, _, $ ) {
 		// Override from the wire specification
 		template_todo: false,
 		class_completed: '',
+		CREATE_KEYS: [],
 
 
 		//

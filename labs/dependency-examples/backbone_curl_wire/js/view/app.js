@@ -10,13 +10,12 @@ define( [ 'backbone', 'underscore', 'jquery' ], function( Backbone, _, $ ) {
 		//
 		// Properties
 		//
-		CREATE_KEYS: [
-			13 // Enter
-		],
 
 		// Override from the wire specification
 		el_input: false,
 		el_todos: false,
+
+		CREATE_KEYS: [],
 
 
 		//

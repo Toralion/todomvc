@@ -16,9 +16,12 @@ define( {
 	// General Properties
 	//
 	el_app: { $ref: 'dom.first!#todoapp' },
-
 	el_input: { $ref: 'dom.first!#new-todo' },
 	el_todos: { $ref: 'dom.first!#todo-list' },
+
+	CREATE_KEYS: [
+		13 // Enter
+	],
 
 
 	//
@@ -67,6 +70,9 @@ define( {
 		},
 
 		properties: {
+
+			// Properties
+			CREATE_KEYS: { $ref: 'CREATE_KEYS' },
 
 			// Add stats template
 			template_stats: { $ref: 'template_stats' },
