@@ -46,8 +46,17 @@ define( {
 			template_todo: { $ref: 'template_todo' },
 
 			// Classes
-			class_completed: 'completed'
+			class_completed: 'completed',
+			class_editable: 'editing'
 
+		},
+
+		connect: {
+			'model_todo': {
+				'change:title': 'render',
+				'change:completed': 'render',
+				'destroy': 'remove'
+			}
 		}
 
 	},
@@ -66,6 +75,13 @@ define( {
 					parse: true
 				}
 			]
+		},
+
+		connect: {
+			'view_todo': {
+				'update': 'save',
+				'destroy': 'destroy'
+			}
 		}
 
 	}
