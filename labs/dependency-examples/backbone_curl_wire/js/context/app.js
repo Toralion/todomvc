@@ -5,7 +5,7 @@
 define( {
 
 	plugins: [
-		{ module: 'wire/debug', trace: { pointcut: /^((?!(model$|constructor$|template|localstorage|_)).*)$/ } }, // Stop constructor, model or anything beginning with _, template or localstorage being wrapped by the debugger
+		{ module: 'wire/debug', trace: { pointcut: /^((?!(model$|constructor$|template|localstorage|_|on)).*)$/ } }, // Stop constructor, model or anything beginning with _, template or localstorage being wrapped by the debugger
 		{ module: 'wire/underscore/template' },
 		{ module: 'wire/jquery/dom' },
 		{ module: 'wire/backbone/events' }
