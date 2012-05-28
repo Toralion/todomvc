@@ -123,6 +123,7 @@ define( {
 			'view_app': {
 				'createTodo': 'create',
 				'updateTodos': 'update',
+				'clearCompleted': 'clearCompleted'
 			}
 		}
 

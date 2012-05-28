@@ -2,7 +2,7 @@
 // Todos collection
 //
 
-define( [ 'backbone/wire_collection' ], function( Collection ) {
+define( [ 'underscore', 'backbone/wire_collection' ], function( _, Collection ) {
 
 	// Extend from the backbone wire collection adapter so
 	// we can take advantage of its wire context creation methods.
@@ -47,6 +47,12 @@ define( [ 'backbone/wire_collection' ], function( Collection ) {
 			var self = this;
 
 			self.invoke( 'save', data, options );
+		},
+
+		clearCompleted: function() {
+			var self = this;
+
+			_( self.where( { completed: true } ) ).invoke( 'destroy' );
 		}
 
 	} );

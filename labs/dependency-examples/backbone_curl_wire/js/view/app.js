@@ -81,7 +81,8 @@ define( [ 'backbone', 'underscore', 'jquery' ], function( Backbone, _, $ ) {
 			'keypress #new-todo': 'createOnKey',
 
 			// Completed
-			'change #toggle-all': 'toggleAllCompleted'
+			'change #toggle-all': 'toggleAllCompleted',
+			'click #clear-completed': 'clearCompleted'
 
 		},
 
@@ -111,6 +112,12 @@ define( [ 'backbone', 'underscore', 'jquery' ], function( Backbone, _, $ ) {
 			self.trigger( 'updateTodos', {
 				completed: is_completed
 			} );
+		},
+
+		clearCompleted: function( e ) {
+			var self = this;
+
+			self.trigger( 'clearCompleted' );
 		}
 
 	} );
