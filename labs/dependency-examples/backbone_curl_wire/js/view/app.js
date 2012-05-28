@@ -12,9 +12,12 @@ define( [ 'backbone', 'underscore', 'jquery' ], function( Backbone, _, $ ) {
 		//
 
 		// Override from the wire specification
+		template_stats: false,
+
 		el_input: false,
 		el_todos: false,
 		el_completed: false,
+		el_footer: false,
 
 		CREATE_KEYS: [],
 
@@ -37,13 +40,35 @@ define( [ 'backbone', 'underscore', 'jquery' ], function( Backbone, _, $ ) {
 		getAllCompletedValue: function() {
 			var self = this;
 
-			return $( self.el_completed ).is( ':checked' );
+			return self.el_completed.checked;
+		},
+
+		setAllCompletedValue: function( completed ) {
+			var self = this;
+
+			return self.el_completed.checked = !!completed;
 		},
 
 		addTodo: function( context, options ) {
 			var self = this;
 
 			$( self.el_todos ).append( context[ context[ 'name_view' ] ].el );
+		},
+
+		updateStats: function( data ) {
+			var self = this;
+
+			if ( !data.active || !data.completed ) {
+				self.setAllCompletedValue( !data.active );
+			}
+
+			self.renderStats( data );
+		},
+
+		renderStats: function( data ) {
+			var self = this;
+
+			$( self.el_footer ).html( self.template_stats( data ) ).toggle( true );
 		},
 
 

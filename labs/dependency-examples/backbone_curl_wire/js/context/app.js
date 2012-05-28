@@ -19,6 +19,7 @@ define( {
 	el_input: { $ref: 'dom.first!#new-todo' },
 	el_todos: { $ref: 'dom.first!#todo-list' },
 	el_completed: { $ref: 'dom.first!#toggle-all' },
+	el_footer: { $ref: 'dom.first!#footer' },
 
 	CREATE_KEYS: [
 		13 // Enter
@@ -81,12 +82,15 @@ define( {
 			// Elements
 			el_input: { $ref: 'el_input' },
 			el_todos: { $ref: 'el_todos' },
-			el_completed: { $ref: 'el_completed' }
+			el_completed: { $ref: 'el_completed' },
+			el_footer: { $ref: 'el_footer' }
+		},
 		},
 
 		connect: {
 			'collection_todos': {
-				'readyContext': 'addTodo'
+				'readyContext': 'addTodo',
+				'updateStats': 'updateStats'
 			}
 		}
 
@@ -102,7 +106,8 @@ define( {
 		},
 
 		init: {
-			fetch: []
+			fetch: [],
+			setupStatsUpdates: []
 		},
 
 		properties: {
@@ -117,7 +122,7 @@ define( {
 		connect: {
 			'view_app': {
 				'createTodo': 'create',
-				'updateTodos': 'update'
+				'updateTodos': 'update',
 			}
 		}
 
