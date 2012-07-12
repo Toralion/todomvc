@@ -85,7 +85,6 @@ define( {
 			el_completed: { $ref: 'el_completed' },
 			el_footer: { $ref: 'el_footer' }
 		},
-		},
 
 		connect: {
 			'collection_todos': {
