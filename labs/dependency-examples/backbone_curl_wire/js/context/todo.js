@@ -72,7 +72,8 @@ define( {
 				{ $ref: 'model_data' },
 				// Options
 				{
-					parse: true
+					parse: true,
+					collection: { $ref: 'collection_todos' }
 				}
 			]
 		},
